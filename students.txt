@@ -1,0 +1,3 @@
+1000,Khushi,313 shiv nagar jalandhar,7986572415,IT,2,5000:N/A|5002:N/A|
+1001,Advitiya,548 Phase 3 Green city Bathinda,6283850637,IT,2,5000:A|5001:B|
+1002,Vanshika,XYZ rama mandi,9478922284,CSE,2,
