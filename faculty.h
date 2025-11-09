@@ -8,6 +8,7 @@ using namespace std;
 
 class Faculty : public Person {
 private:
+    //instance variables for faculty details
     string department;
     vector<int> course_load;
 

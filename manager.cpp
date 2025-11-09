@@ -7,6 +7,7 @@
 
 using namespace std;
 
+//splitting string data fetched from text files into tokens based on delimiter (, or |) 
 vector<string> ManagementSystem::splitString(const string& s, char delimiter) {
     vector<string> tokens;
     string token;
@@ -44,6 +45,8 @@ Course* ManagementSystem::find_course(int id) {
     return nullptr;
 }
 
+//called when execution of the program terminates 
+//saves all the data in vectors in their respective text files 
 void ManagementSystem::save_all_data() const {
     cout << "\nSaving all data to files..." << endl;
     
@@ -67,6 +70,8 @@ void ManagementSystem::save_all_data() const {
     cout << "All data saved successfully." << endl;
 }
 
+//called when execution of the program starts (i.e in the ManagementSystem class constructor) 
+//this loads all the data in the files into the vectors 
 void ManagementSystem::load_all_data() {
     cout << "Loading previous data..." << endl;
     
@@ -162,6 +167,7 @@ ManagementSystem::~ManagementSystem() {
     save_all_data();
 }
 
+//takes student details input , creates a new student object and pushes that to vector studentss
 void ManagementSystem::add_new_student() {
     int id;
     string name, address, phone, major;
@@ -203,6 +209,7 @@ void ManagementSystem::add_new_student() {
     cout << "\nSUCCESS: Student " << name << " (ID: " << id << ") added." << endl;
 }
 
+////takes faculty details input , creates a new faculty object and pushes that to vector faculty
 void ManagementSystem::add_new_faculty() {
     int id;
     string name, address, phone, department;
@@ -236,6 +243,7 @@ void ManagementSystem::add_new_faculty() {
     cout << "\nSUCCESS: Faculty member " << name << " (ID: " << id << ") added." << endl;
 }
 
+//takes course details input , creates a new course object and pushes that to vector courses
 void ManagementSystem::add_new_course() {
     int course_id;
     string title;
@@ -286,6 +294,7 @@ void ManagementSystem::add_new_course() {
     cout << "\nSUCCESS: Course '" << title << "' (ID: " << course_id << ") added and assigned to Faculty ID " << faculty_id << "." << endl;
 }
 
+//displays student details in a structured manner
 void ManagementSystem::view_all_students() const {
     cout << "\n==========================================" << endl;
     cout << "            ALL STUDENT RECORDS" << endl;
@@ -296,13 +305,14 @@ void ManagementSystem::view_all_students() const {
         return;
     }
     
+    // Iterates over the vector of student objects and call display() function 
     for (const auto& student : students) {
         student.display();
         cout << "------------------------------------------" << endl;
     }
 }
 
-
+//displays faculty details in a structured manner 
 void ManagementSystem::view_all_faculties() const {
     cout << "\n==========================================" << endl;
     cout << "            ALL FACULTY RECORDS" << endl;
@@ -313,12 +323,14 @@ void ManagementSystem::view_all_faculties() const {
         return;
     }
     
+    //Iterates over the vector of faculty objects and call display() function 
     for (const auto& f : faculty) {
         f.display();
         cout << "------------------------------------------" << endl;
     }
 }
 
+//displays course details in a structured manner
 void ManagementSystem::view_all_courses() const {
     cout << "\n==========================================" << endl;
     cout << "            ALL COURSE RECORDS" << endl;
@@ -329,7 +341,7 @@ void ManagementSystem::view_all_courses() const {
         return;
     }
     
-    // Iterate over the vector of Course objects and call display()
+    // Iterates over the vector of Course objects and call display() function 
     for (const auto& c : courses) {
         c.display();
         cout << "------------------------------------------" << endl;
@@ -368,6 +380,7 @@ void ManagementSystem::set_student_grade() {
     cout << "Enter Course ID: ";
     if (!(cin >> course_id)) return;
 
+    //finds student with the paarticular id in the students vector , returns a ref so that change made is visible everywhere 
     Student* student = find_student(student_id);
     
     if (!student) {
@@ -375,16 +388,18 @@ void ManagementSystem::set_student_grade() {
         return;
     }
     
-    cout << "Enter Grade (e.g., A, B+, F): ";
+    cout << "Enter Grade (e.g., S, A, B, C, D, E, U): ";
     cin >> grade;
 
     student->set_grade(course_id, grade);
     cout << "\nGrade set successfully for Student " << student_id << " in Course " << course_id << "." << endl;
 }
 
+
 void ManagementSystem::run_menu() {
     int choice;
-    
+    //the function that starts the execution of the main program 
+    //the user is given choices for what action to perform 
     do {
         cout << "\n==========================================" << endl;
         cout << "  UNIVERSITY MANAGEMENT SYSTEM" << endl;
@@ -400,6 +415,7 @@ void ManagementSystem::run_menu() {
         cout << "9. Exit System" << endl;
         cout << "Enter your choice: ";
         
+        //handles console input 
         if (!(cin >> choice)) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');

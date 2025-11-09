@@ -9,6 +9,7 @@ using namespace std;
 //no member function definitions in header file only declarations
 class Person {
 protected:
+    //instance variables for basic details
     int id;
     string name;
     string address;
@@ -18,6 +19,7 @@ public:
     Person(int id_val, const string& name_val, const string& address_val, const string& phone_val);
     virtual ~Person() = default;
 
+    //member functions for accessing private data
     int get_id() const;
     string get_name() const;
     void update_address(const string& new_address);

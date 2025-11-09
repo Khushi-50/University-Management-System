@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 Course::Course(int id_val, const string& title_val, int credits_val, int faculty_id_val)
     : course_id(id_val), title(title_val), credits(credits_val), faculty_id(faculty_id_val) {}
 
@@ -34,6 +33,7 @@ void Course::load_student_id(int student_id) {
     student_ids.push_back(student_id);
 }
 
+//overriden dusplay function definition
 void Course::display() const {
     cout << "--- Course Details ---" << endl;
     cout << "Code: " << course_id << endl;

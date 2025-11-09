@@ -8,6 +8,9 @@ using namespace std;
 
 class Course {
 private:
+    //instance variables for course details
+    //private so that inaccessible to user 
+    //encapsulation implementation
     int course_id;
     string title;
     int credits;

@@ -30,6 +30,8 @@ public:
     ManagementSystem();
     ~ManagementSystem();
 
+    //menu functions 
+    
     void add_new_student();
     void add_new_faculty();
     void add_new_course();
